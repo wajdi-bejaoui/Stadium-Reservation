@@ -1,0 +1,145 @@
+<div class="bg-gray-100 dark:bg-gray-800 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row -mx-4">
+            <div class="md:flex-1 px-4">
+                <div class="h-[460px] rounded-lg bg-gray-300 dark:bg-gray-700 mb-4">
+                    <img class="w-full h-full object-cover" 
+                    src="https://plus.unsplash.com/premium_photo-1684713510655-e6e31536168d?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Stadium Image">
+                </div>
+                <div class="flex -mx-2 mb-4">
+                    <!-- <div class="w-full px-2">
+                        <button class="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">Adress</button>
+                    </div> -->
+                   
+                </div>
+            </div>
+            <div class="md:flex-1 px-4">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Stadium Name</h2>
+                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <div class="flex mb-4">
+                    <div class="mr-4">
+                        <span class="font-bold text-gray-700 dark:text-gray-300"><i class="fa-solid fa-location-dot mr-2"></i></span>
+                        <span class="text-gray-600 dark:text-gray-300">Tunis</span>
+                    </div>
+                    <div>
+                        <span class="font-bold text-gray-700 dark:text-gray-300"><i class="fa-solid fa-user-group mr-2"></i></span>
+                        <span class="text-gray-600 dark:text-gray-300">12</span>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div>
+                        <span class="font-bold text-gray-700 dark:text-gray-300"><i class="fa-solid fa-clock mr-2"></i></span>
+                        <span class="text-gray-600 dark:text-gray-300">0:00 - 23:59</span>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <span class="font-bold text-gray-700 dark:text-gray-300 mr-2">Price:</span>
+                    <span class="text-gray-600 dark:text-gray-300">95dt</span>
+                </div>
+                <!-- <div class="w-full px-2">
+                    <button class="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">Location</button>
+                </div> -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 p-4 max-w-[400px] md:max-w-[600px] place-items-center">
+                    <img class="hover:opacity-75" src="https://plus.unsplash.com/premium_photo-1684713510655-e6e31536168d?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                    <img class="hover:opacity-75" src="https://plus.unsplash.com/premium_photo-1684713510655-e6e31536168d?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                    <img class="hover:opacity-75" src="https://plus.unsplash.com/premium_photo-1684713510655-e6e31536168d?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                    <img class="hover:opacity-75" src="https://plus.unsplash.com/premium_photo-1684713510655-e6e31536168d?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                    <img class="hover:opacity-75" src="https://plus.unsplash.com/premium_photo-1684713510655-e6e31536168d?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                    <img class="hover:opacity-75" src="https://plus.unsplash.com/premium_photo-1684713510655-e6e31536168d?q=80&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    
+
+
+    <!-- lower half -->
+
+    <!-- <div class="flex min-h-screen bg-slate-200 dark:bg-gray-800 items-center justify-center"> -->
+    <div class="flex   items-center justify-center">
+
+        
+      <!-- bg-black/90 -->
+        <div class="flex flex-col p-10 items-center justify-center bg-black/90 ">
+
+          <!-- <div class="row">
+            <div class="col-md-20 title_bx">
+               <h3 class="title"> Reservation   </h3>
+            </div>
+          </div> -->
+          
+            <div class="mx-auto max-w-6xl px-12">
+
+                <!-- week -->
+              <div class="flex flex-wrap justify-center gap-1 mb-5">
+                
+                <!-- Day Options -->
+                <div *ngFor="let item of week">
+                    <label class="cursor-pointer">
+                        <input type="radio" class="peer sr-only" name="pricing" [(ngModel)]="selectedDay" [value]="item" />
+                        <div class="w-34 max-w-md rounded-md bg-white dark:bg-gray-900 p-4 text-gray-600 dark:text-gray-300 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-green-600 peer-checked:ring-green-800 peer-checked:ring-offset-2">
+                          <div class="flex flex-col justify-center items-center">
+                            <div class="flex items-center justify-between">
+                              <p class="text-sm font-semibold uppercase text-gray-500 dark:text-gray-400">{{item.day}}</p>
+                            </div>
+                            <div class="flex items-end justify-between">
+                              <p><span class="text-lg font-bold">{{item.date}}</span></p>
+                            </div>
+                          </div>
+                        </div>
+                    </label>
+                </div>
+
+                
+              </div>
+
+              <!-- timing -->
+              <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                
+                
+
+                <!-- Time Options -->
+                
+                <div *ngFor="let item of timing">
+                    <label class="cursor-pointer">
+                        <input type="radio" class="peer sr-only" name="timing" [(ngModel)]="selectedTime" [value]="item" />
+                        <div class="w-45 max-w-sm rounded-md bg-white dark:bg-gray-900 p-5 text-gray-600 dark:text-gray-300 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-light-600 peer-checked:bg-green-600">
+                          <div class="flex flex-col justify-center items-center gap-1">
+                            <div class="flex items-end justify-between">
+                              <p class=" font-bold text-lg ">95 dt</p>
+                              <!-- <label class="relative mb-5 cursor-pointer">
+                                <input type="checkbox" value="" class="peer sr-only" />
+                                <div class="peer h-5 w-9 rounded-full bg-gray-400 after:absolute after:top-[2px] after:left-[2px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-indigo-900 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-200"></div>
+                              </label> -->
+                            </div>
+                            <div class="flex items-end justify-between">
+                              <p><i class="fa-regular fa-clock mr-2"></i> <span class="text-lg font-bold">{{item.start}} - {{item.end}}</span></p>
+                            </div>
+                          </div>
+                        </div>
+                    </label>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
+          <!-- <p>Selected Day: {{ selectedDay.day }}</p> -->
+          
+
+          <!-- <label class="relative mb-5 cursor-pointer">
+            <input type="checkbox" value="" class="peer sr-only" />
+            <div class="peer h-5 w-9 rounded-full bg-gray-400 after:absolute after:top-[2px] after:left-[2px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-indigo-900 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-200"></div>
+            </label> -->
+    </div>
+</div>
+
+
+
+

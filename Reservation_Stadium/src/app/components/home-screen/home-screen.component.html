@@ -1,0 +1,361 @@
+<!-- component -->
+
+  <div class="hero py-32 bg-slate-200 relative before:block before:absolute before:bg-black before:h-full before:w-full before:top-0 before:z-10 before:opacity-70">
+    <!-- <img src="https://picsum.photos/1920/850" alt="" class="absolute top-0 left-0 h-full w-full object-cover"> -->
+    <img 
+    src="https://plus.unsplash.com/premium_photo-1684713510655-e6e31536168d?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+     alt="" class="absolute top-0 left-0 h-full w-full object-cover">
+
+    <div class="relative z-30 mx-auto max-w-screen-xl grid sm:grid-cols-1 md:grid-cols-2">
+      <div class="mx-2">
+        <span class="text-yellow-200 uppercase font-medium mb-4 block">Stadium hub</span>
+        <h1 class="text-7xl text-white font-extrabold">TROUVER RESERVER & have fun</h1>
+        
+        <!-- <p class="text-slate-200 my-6">
+          Taciti quasi, sagittis excepteur hymenaeos, id temporibus hic proident ullam, eaque donec delectus tempor consectetur nunc, purus congue? Rem volutpat sodales! Mollit. Minus exercitationem wisi. Optio ullamco nullam purus volutpat optio ullamco nullam purus volutpat.
+        </p> -->
+        
+      </div>
+      <div class="">
+        <!-- form  -->
+        <div class="flex items-center justify-center mx-4">
+    
+            <div class="bg-white rounded-2xl border shadow-xl p-10 max-w-lg">
+            <div class="flex flex-col items-center space-y-4">
+              <h1 class="font-bold text-2xl text-gray-700 w-4/6 text-center uppercase">TROUVER RESERVER & HAVE FUN
+                </h1>
+                <!-- <h1 class="font-bold text-2xl text-gray-700 w-4/6 text-center"> & HAVE FUN</h1> -->
+            <!-- <p class="text-sm text-gray-500 text-center w-5/6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborea.</p> -->
+            <!-- <input type="text" placeholder="Email" class="border-2 rounded-lg w-full h-12 px-4"> -->
+            <select (change)="onGouvernoratsChange($event)" class="border-2 rounded-lg w-full h-12 px-4">
+                <option value="" selected>Governorate</option>
+                <option  *ngFor="let item of gouvernorats" [value]="item.name">
+                  {{ item.name }}
+                </option>
+              </select>
+              <select (change)="oncategoryChange($event)" class="border-2 rounded-lg w-full h-12 px-4">
+                <option value="" selected>Category</option>
+                <option  *ngFor="let item of categorys" [value]="item.name">
+                  {{ item.name }}
+                </option>
+              </select>
+            <input type="date" placeholder="Email" class="border-2 rounded-lg w-full h-12 px-4">
+            <button class="bg-green-600 text-white rounded-md font-semibold px-4 py-3 w-full hover:bg-green-800" (click)="search()"><i class="fa-solid fa-magnifying-glass mr-2"></i>Rechercher</button>
+            <!-- <button type="button"
+            class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="mobile-menu-2" aria-expanded="true">
+                <i class="fa-solid fa-magnifying-glass mr-2"></i>Rechercher
+            </button> -->
+            </div>
+            
+          </div>
+            
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-white mx-4">
+    <div class="main max-w-screen-xl mx-auto py-24 bg-white">
+      <div class="popular">
+        <header class="flex flex-col items-center mb-24">
+          <!-- <span class="block text-green-500 font-medium mb-2">POPULAR DESTINATION</span> -->
+          <h2 class="font-extrabold text-5xl">L'AVENUE SPORTIVE RECOMMANDÉE</h2>
+        </header>
+        <div class="list grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-4">
+          
+          <app-card *ngFor="let item of listStadiums" [stadium]="item"></app-card>
+        </div>
+
+        <div *ngIf="loading" class="list grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-4">
+          
+          <app-skeleton-card *ngFor="let item of items"></app-skeleton-card>
+        </div>
+        
+        <a href="/stadiums">
+          <button class="text-white font-bold h-12 bg-green-500 w-60 mx-auto block mt-14 hover:bg-green-700 transition-all" href="/stadiums">
+            Read More
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <div class="bg-stone-50">
+    <div class="main max-w-screen-xl mx-auto py-24">
+    <div class="popular">
+      <header class="flex flex-col items-center mb-24">
+        <span class="block text-green-500 font-medium mb-2">POPULAR DESTINATION</span>
+        <h2 class="font-extrabold text-5xl">POPULAR PACKAGES</h2>
+      </header>
+      <div class="grid grid-cols-2 gap-10">
+        
+        
+        <div class="group shadow-md hover:shadow-lg bg-white grid grid-cols-2">
+          <div class="relative h-80">
+            <div class="absolute bg-rose-500 py-2 pr-3 pl-6 mt-6 text-white">
+              <span class="font-bold text-xl">$1.230</span> <span class="text-xs text-stone-200">/ persone</span>
+            </div>
+            <img src="https://fastly.picsum.photos/id/15/2500/1667.jpg?hmac=Lv03D1Y3AsZ9L2tMMC1KQZekBVaQSDc1waqJ54IHvo4" alt="" class="h-full object-cover">
+            <div class="bg-sky-500 py-3 px-6 absolute w-full bottom-0">
+              <div class="flex justify-between">
+                <span class="flex items-center gap-1 text-xs text-white">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  </span>
+                  <span>7D/6N</span>
+                </span>
+                <span class="flex items-center gap-1 text-xs text-white relative -- before:block before:absolute before:h-full before:w-px before:top-0 before:bg-white before:-left-[26px]">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  </span>
+                  <span>7D/6N</span>
+                </span>
+                <span class="flex items-center gap-1 text-xs text-white relative -- before:block before:absolute before:h-full before:w-px before:top-0 before:bg-white before:-left-[26px]">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  </span>
+                  <span>7D/6N</span>
+                </span>
+  
+              </div>
+            </div>
+          </div>
+          <div class="p-10 relative">
+            <a href="" class="absolute top-0 left-0 h-full w-full">&nbsp;</a>
+            <h2 class="font-bold text-2xl text-slate-800 mb-6 group-hover:text-rose-600">Sunset view of beautiful lakeside</h2>
+            <p class="flex justify-between mb-6">
+              <span class="text-xs text-slate-400">(17 reviews)</span>
+              <span class="flex">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-slate-500 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+              </span>
+            </p>
+            <p class="text-slate-700">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit luctus nec ullam. Ut elit tellus, luctus nec ullam.
+            </p>
+          </div>
+        </div>
+  
+        <div class="group shadow-md hover:shadow-lg bg-white grid grid-cols-2">
+          <div class="relative h-80">
+            <div class="absolute bg-rose-500 py-2 pr-3 pl-6 mt-6 text-white">
+              <span class="font-bold text-xl">$1.230</span> <span class="text-xs text-stone-200">/ persone</span>
+            </div>
+            <img src="https://fastly.picsum.photos/id/15/2500/1667.jpg?hmac=Lv03D1Y3AsZ9L2tMMC1KQZekBVaQSDc1waqJ54IHvo4" alt="" class="h-full object-cover">
+            <div class="bg-sky-500 py-3 px-6 absolute w-full bottom-0">
+              <div class="flex justify-between">
+                <span class="flex items-center gap-1 text-xs text-white">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  </span>
+                  <span>7D/6N</span>
+                </span>
+                <span class="flex items-center gap-1 text-xs text-white relative -- before:block before:absolute before:h-full before:w-px before:top-0 before:bg-white before:-left-[26px]">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  </span>
+                  <span>7D/6N</span>
+                </span>
+                <span class="flex items-center gap-1 text-xs text-white relative -- before:block before:absolute before:h-full before:w-px before:top-0 before:bg-white before:-left-[26px]">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  </span>
+                  <span>7D/6N</span>
+                </span>
+  
+              </div>
+            </div>
+          </div>
+          <div class="p-10 relative">
+            <a href="" class="absolute top-0 left-0 h-full w-full">&nbsp;</a>
+            <h2 class="font-bold text-2xl text-slate-800 mb-6 group-hover:text-rose-600">Sunset view of beautiful lakeside</h2>
+            <p class="flex justify-between mb-6">
+              <span class="text-xs text-slate-400">(17 reviews)</span>
+              <span class="flex">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-slate-500 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+              </span>
+            </p>
+            <p class="text-slate-700">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit luctus nec ullam. Ut elit tellus, luctus nec ullam.
+            </p>
+          </div>
+        </div>
+  
+        <div class="group shadow-md hover:shadow-lg bg-white grid grid-cols-2">
+          <div class="relative h-80">
+            <div class="absolute bg-rose-500 py-2 pr-3 pl-6 mt-6 text-white">
+              <span class="font-bold text-xl">$1.230</span> <span class="text-xs text-stone-200">/ persone</span>
+            </div>
+            <img src="https://fastly.picsum.photos/id/15/2500/1667.jpg?hmac=Lv03D1Y3AsZ9L2tMMC1KQZekBVaQSDc1waqJ54IHvo4" alt="" class="h-full object-cover">
+            <div class="bg-sky-500 py-3 px-6 absolute w-full bottom-0">
+              <div class="flex justify-between">
+                <span class="flex items-center gap-1 text-xs text-white">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  </span>
+                  <span>7D/6N</span>
+                </span>
+                <span class="flex items-center gap-1 text-xs text-white relative -- before:block before:absolute before:h-full before:w-px before:top-0 before:bg-white before:-left-[26px]">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  </span>
+                  <span>7D/6N</span>
+                </span>
+                <span class="flex items-center gap-1 text-xs text-white relative -- before:block before:absolute before:h-full before:w-px before:top-0 before:bg-white before:-left-[26px]">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  </span>
+                  <span>7D/6N</span>
+                </span>
+  
+              </div>
+            </div>
+          </div>
+          <div class="p-10 relative">
+            <a href="" class="absolute top-0 left-0 h-full w-full">&nbsp;</a>
+            <h2 class="font-bold text-2xl text-slate-800 mb-6 group-hover:text-rose-600">Sunset view of beautiful lakeside</h2>
+            <p class="flex justify-between mb-6">
+              <span class="text-xs text-slate-400">(17 reviews)</span>
+              <span class="flex">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-slate-500 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+              </span>
+            </p>
+            <p class="text-slate-700">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit luctus nec ullam. Ut elit tellus, luctus nec ullam.
+            </p>
+          </div>
+        </div>
+        <div class="group shadow-md hover:shadow-lg bg-white grid grid-cols-2">
+          <div class="relative h-80">
+            <div class="absolute bg-rose-500 py-2 pr-3 pl-6 mt-6 text-white">
+              <span class="font-bold text-xl">$1.230</span> <span class="text-xs text-stone-200">/ persone</span>
+            </div>
+            <img src="https://fastly.picsum.photos/id/15/2500/1667.jpg?hmac=Lv03D1Y3AsZ9L2tMMC1KQZekBVaQSDc1waqJ54IHvo4" alt="" class="h-full object-cover">
+            <div class="bg-sky-500 py-3 px-6 absolute w-full bottom-0">
+              <div class="flex justify-between">
+                <span class="flex items-center gap-1 text-xs text-white">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  </span>
+                  <span>7D/6N</span>
+                </span>
+                <span class="flex items-center gap-1 text-xs text-white relative -- before:block before:absolute before:h-full before:w-px before:top-0 before:bg-white before:-left-[26px]">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  </span>
+                  <span>7D/6N</span>
+                </span>
+                <span class="flex items-center gap-1 text-xs text-white relative -- before:block before:absolute before:h-full before:w-px before:top-0 before:bg-white before:-left-[26px]">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                  </span>
+                  <span>7D/6N</span>
+                </span>
+  
+              </div>
+            </div>
+          </div>
+          <div class="p-10 relative">
+            <a href="" class="absolute top-0 left-0 h-full w-full">&nbsp;</a>
+            <h2 class="font-bold text-2xl text-slate-800 mb-6 group-hover:text-rose-600">Sunset view of beautiful lakeside</h2>
+            <p class="flex justify-between mb-6">
+              <span class="text-xs text-slate-400">(17 reviews)</span>
+              <span class="flex">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green-600 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-slate-500 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                  </svg>
+              </span>
+            </p>
+            <p class="text-slate-700">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit luctus nec ullam. Ut elit tellus, luctus nec ullam.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <button class="text-white h-12 bg-green-500 w-60 mx-auto block mt-14 hover:bg-sky-600 transition-all">
+        Read More
+      </button>
+    </div>
+  </div>
+  </div> -->
+  
+  <app-footer></app-footer>
