@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'stadiums', component: StadiumListScreenComponent },
-  { path: 'stadium_detail', component: StadiumDetailScreenComponent },
+  { path: 'stadium_detail/:id', component: StadiumDetailScreenComponent },
   { path: 'contact', component: ContactUsScreenComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' } // Wildcard route to redirect to home
 ];

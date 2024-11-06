@@ -17,6 +17,10 @@ import { StadiumDetailScreenComponent } from './components/stadium-detail-screen
 import { ContactUsScreenComponent } from './components/contact-us-screen/contact-us-screen.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { provideHttpClient } from '@angular/common/http';
+import { ReviewRatingComponent } from './components/review-rating/review-rating.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { TimeFormatPipe } from './pipes/time-format.pipe';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { provideHttpClient } from '@angular/common/http';
     SkeletonCardComponent,
     StadiumDetailScreenComponent,
     ContactUsScreenComponent,
-    FooterComponent
+    FooterComponent,
+    ReviewRatingComponent,
+    ReservationComponent,
+    TimeFormatPipe,
+
   ],
   imports: [
     BrowserModule,
