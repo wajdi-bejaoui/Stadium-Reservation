@@ -23,9 +23,10 @@ public class ReservationService {
     @Autowired
     private ReservationRepository reservationRepository;
 
-    public Reservation makeReservation(Player player, Stadium stadium, Reservation reservation) {
-        reservation.setPlayer(player);
+    public Reservation makeReservation(User user, Stadium stadium, Reservation reservation, Timing timing) {
+        reservation.setUser(user);
         reservation.setStadium(stadium);
+        reservation.setTiming(timing);
         return reservationRepository.save(reservation);
     }
 

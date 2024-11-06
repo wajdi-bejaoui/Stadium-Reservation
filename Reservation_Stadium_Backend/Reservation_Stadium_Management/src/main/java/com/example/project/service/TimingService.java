@@ -5,13 +5,18 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.project.Entity.Stadium;
 import com.example.project.Entity.Timing;
+import com.example.project.repository.TimingRepository;
 
 @Service
 public class TimingService {
+
+    @Autowired
+    TimingRepository timingRepository;
 
     public List<Timing> generateAvailableTimings(Stadium stadium) {
         List<Timing> timings = new ArrayList<>();
@@ -49,5 +54,9 @@ public class TimingService {
         }
 
         return timings;
+    }
+
+    public Timing createTiming(Timing timing) {
+        return timingRepository.save(timing);
     }
 }

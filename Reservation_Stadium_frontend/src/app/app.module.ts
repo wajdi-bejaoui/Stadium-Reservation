@@ -20,6 +20,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { ReviewRatingComponent } from './components/review-rating/review-rating.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -39,6 +41,7 @@ import { TimeFormatPipe } from './pipes/time-format.pipe';
     ReviewRatingComponent,
     ReservationComponent,
     TimeFormatPipe,
+    
 
   ],
   imports: [
@@ -46,6 +49,7 @@ import { TimeFormatPipe } from './pipes/time-format.pipe';
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [provideHttpClient()], // add it here 
   bootstrap: [ AppComponent ]

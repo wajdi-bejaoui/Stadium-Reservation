@@ -30,6 +30,7 @@ import com.example.project.service.UserService;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -47,7 +48,7 @@ public class AuthController {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
-    @PostMapping("/registration")
+    @PostMapping("/register")
     public ResponseEntity<String> saveUser(@RequestBody UserDto userDto) {
         // Check if the email already exists
         if (userRepository.existsByEmail(userDto.getEmail())) {

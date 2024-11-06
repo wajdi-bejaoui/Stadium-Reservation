@@ -3,6 +3,8 @@ package com.example.project.controller;
 import com.example.project.Entity.*;
 
 import com.example.project.service.ReservationService;
+import com.example.project.service.TimingService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,16 +18,23 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
 
+    @Autowired
+    private TimingService timingService;
+
     @PostMapping("/make")
     public Reservation makeReservation(
             @RequestBody Reservation reservation,
-            @RequestParam Long playerId,
-            @RequestParam Long stadiumId) {
-        Player player = new Player();
-        player.setId(playerId); // You should ideally fetch this player from the database
+            @RequestParam Long userId,
+            @RequestParam Long stadiumId,
+            @RequestParam Timing timing) {
+        User user = new User();
+        user.setId(userId); // You should ideally fetch this player from the database
         Stadium stadium = new Stadium();
         stadium.setId(stadiumId); // You should ideally fetch this stadium from the database
-        return reservationService.makeReservation(player, stadium, reservation);
+
+        // create new timing instance in data base
+
+        return reservationService.makeReservation(user, stadium, reservation, timing);
     }
 
     @GetMapping("/{id}")

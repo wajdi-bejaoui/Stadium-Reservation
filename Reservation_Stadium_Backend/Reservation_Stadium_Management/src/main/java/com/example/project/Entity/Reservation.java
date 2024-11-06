@@ -1,63 +1,35 @@
 package com.example.project.Entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Reservation {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private LocalDate date;
-    private LocalTime time;
 
-    @ManyToOne
-    @JoinColumn(name = "player_id")
-    private Player player;
+    private LocalDate reservationDate; // Date of the reservation
 
+    // stadium: Many-to-one relationship linking to a Stadium.
+    // timing: Many-to-one relationship linking to a Timing.
     @ManyToOne
     @JoinColumn(name = "stadium_id")
     private Stadium stadium;
 
-    public Long getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "timing_id")
+    private Timing timing;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id") // Foreign key to link user to the reservation
+    private User user;
 
-    public LocalTime getTime() {
-        return time;
-    }
+    private boolean confirmed = false; // Reservation confirmation status
 
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public Stadium getStadium() {
-        return stadium;
-    }
-
-    public void setStadium(Stadium stadium) {
-        this.stadium = stadium;
-    }
 }
