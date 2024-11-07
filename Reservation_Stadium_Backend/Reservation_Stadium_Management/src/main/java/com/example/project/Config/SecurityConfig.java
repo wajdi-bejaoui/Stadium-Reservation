@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -19,6 +20,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.example.project.service.CustomUserDetailsService;
 
@@ -36,6 +38,9 @@ public class SecurityConfig {
     @Autowired
     private CustomAuthenticationProvider customAuthenticationProvider;
 
+    @Autowired
+    private JwtAutheticationFilter jwtAuthenticationFilter;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
@@ -45,6 +50,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/timings/**").permitAll() // Permit all for timings
                         .requestMatchers("/api/users/login").permitAll()
                         .requestMatchers("/api/users/registration").permitAll()
+                        .requestMatchers("/api/reservations/**").permitAll() // Explicitly allow POST for
+                        .requestMatchers(HttpMethod.POST, "/api/reservations").permitAll() // Explicitly allow POST for
+
                         .requestMatchers("/api/users/**").permitAll()
                         .requestMatchers("/users/username/**").permitAll()
                         .anyRequest().authenticated() // Ensure all other requests are authenticated
@@ -52,9 +60,20 @@ public class SecurityConfig {
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))// Stateless
                                                                                                              // session
                                                                                                              // management
-                .authenticationProvider(customAuthenticationProvider);// authenticationProvider original
-        // addFilterBefore(jwtAuthenticationFilter,
-        // UsernamePasswordAuthenticationFilter.class);
+                .authenticationProvider(customAuthenticationProvider)// authenticationProvider original
+                .addFilterBefore(jwtAuthenticationFilter,
+                        UsernamePasswordAuthenticationFilter.class);
+        return http.build();
+    }
+
+    @Bean
+    public SecurityFilterChain authenticatedFilterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(request -> request.anyRequest().authenticated())
+                .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))// Stateless
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 

@@ -28,12 +28,10 @@ export class TimingService {
     //     params: params
     // };
 
-    const newDate = new Date(date); // Get the current date
-    const formattedDate = newDate.toISOString().split('T')[0]; // Format to 'YYYY-MM-DD'
 
     let params = new HttpParams()
       .set('stadiumId', stadiumId.toString())
-      .set('date', formattedDate);
+      .set('date', date);
 
     return this.httpclient.get<any[]>(`${this.timingURL}/available`, {params});
   

@@ -37,7 +37,7 @@ export class StadiumService {
         params: params
     };
 
-    return this.httpclient.get<any[]>(`${this.stadiumURL}`, options);
+    return this.httpclient.get<any[]>(`${this.stadiumURL}/get`, options);
   
     // return this.httpclient.get<any[]>(`${this.stadiumURL}`,this.httpOptions);
   }

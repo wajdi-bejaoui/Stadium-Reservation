@@ -7,6 +7,8 @@ import lombok.Setter;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Getter
 @Setter
 @Entity
@@ -30,6 +32,8 @@ public class Stadium {
     private Company company;
 
     @OneToMany(mappedBy = "stadium")
+    @JsonIgnore
+
     private List<Reservation> reservations;
 
     public Long getId() {

@@ -31,7 +31,7 @@ public class StadiumController {
 //        return stadiumService.getAllStadiums();
 //    }
 
-    @GetMapping
+    @GetMapping("/get")
     public List<Stadium> getAllStadiums(
             @RequestParam(value = "governorate", required = false) String governorate,
             @RequestParam(value = "category", required = false) String category) {

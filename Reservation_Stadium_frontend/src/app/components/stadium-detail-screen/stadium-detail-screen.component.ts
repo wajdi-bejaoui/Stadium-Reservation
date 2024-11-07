@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TimingService } from '../../services/timing.service';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { ReservationService } from '../../services/reservation.service';
 
 
 
@@ -28,41 +29,14 @@ export class StadiumDetailScreenComponent implements OnInit {
     end : ''
   };
 
-  
-
-  timing = [
-    {
-      start : '9:00',
-      end : '10:15'
-    },
-    {
-      start : '10:30',
-      end : '11:45'
-    },
-    {
-      start : '12:00',
-      end : '13:15'
-    },
-    {
-      start : '13:30',
-      end : '14:45'
-    },
-    {
-      start : '13:30',
-      end : '14:45'
-    },
-    {
-      start : '15:00',
-      end : '15:15'
-    },
-  ]
-
   stadiumId!:number;
   
 
   week: Array<{day: string, date: string}> = [];
 
-  constructor(private timingService : TimingService, private route: ActivatedRoute) { }
+  constructor(private timingService : TimingService, private route: ActivatedRoute,
+    private reservationService : ReservationService
+  ) { }
 
   ngOnInit(): void {
     this.generateWeek();
@@ -78,10 +52,32 @@ export class StadiumDetailScreenComponent implements OnInit {
   }
 
   getAvailbleTiming() {
-    this.timingService.getAllAvailableTimings(this.stadiumId,this.selectedDay.date).subscribe(
+    const currentYear = new Date().getFullYear();
+     const newDate = new Date(`${currentYear}-${this.selectedDay.date}`);
+      const date = newDate.toISOString().split('T')[0];// Format the new date to 'YYYY-MM-DD'
+    this.timingService.getAllAvailableTimings(this.stadiumId,date).subscribe(
       (response: any) => {
         console.log(response);
         this.listTimings = response;
+        this.loading = false; // Stop loading once data is retrieved
+        // console.log(this.listStadiums);
+      },
+      (error) => {
+        console.error(error);
+        this.loading = false; // Stop loading even if there is an error
+      }
+    );
+  }
+
+  makeReservation() {
+    const currentYear = new Date().getFullYear();
+     const newDate = new Date(`${currentYear}-${this.selectedDay.date}`);
+      const date = newDate.toISOString().split('T')[0];// Format the new date to 'YYYY-MM-DD'
+    // const newDate = new Date(this.selectedDay.date); // Get the current date
+    // const date = newDate.toISOString().split('T')[0]; // Format to 'YYYY-MM-DD'
+    this.reservationService.makeReservation(this.stadiumId,date,this.selectedTime).subscribe(
+      (response: any) => {
+        console.log(response);
         this.loading = false; // Stop loading once data is retrieved
         // console.log(this.listStadiums);
       },

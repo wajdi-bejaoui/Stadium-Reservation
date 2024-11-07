@@ -48,14 +48,20 @@ public class TimingController {
         // Generate timings for the specific date if not already generated
         List<Timing> allTimings = timingService.generateAvailableTimings(stadium, date);
 
-        for (Timing item : allTimings) {
-            System.out.println(item.getStartTime() + " ** " + item.getEndTime());
-        }
+        // for (Timing item : allTimings) {
+        // System.out.println(item.getStartTime() + " ** " + item.getEndTime());
+        // }
         // timingRepository.saveAll(allTimings);
 
         // Filter out available timings
+
         List<Timing> reservedTimings = timingRepository
                 .findByStadiumIdAndReservedAndDate(stadiumId, true, date);
+        System.out.println("*********reservedTimings*********");
+
+        for (Timing item : reservedTimings) {
+            System.out.println(item.getStartTime() + " ** " + item.getEndTime());
+        }
 
         // Get reserved timings by subtracting available timings from all timings
         List<Timing> availableTimings = allTimings.stream()
@@ -68,6 +74,7 @@ public class TimingController {
             System.out.println(item.getStartTime() + " ** " + item.getEndTime());
         }
 
+        System.out.println("Returning available timings: " + availableTimings);
         return ResponseEntity.ok(availableTimings);
     }
 

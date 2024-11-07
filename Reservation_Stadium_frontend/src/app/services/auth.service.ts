@@ -15,7 +15,7 @@ export class AuthService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + sessionStorage.getItem('jwt')
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token')
     })
   };
 
@@ -43,15 +43,15 @@ export class AuthService {
   }
 
   saveToken(token: string): void {
-    localStorage.setItem('token', token);
+    sessionStorage.setItem('token', token);
   }
 
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 
   clearToken(): void {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   }
 
  }
