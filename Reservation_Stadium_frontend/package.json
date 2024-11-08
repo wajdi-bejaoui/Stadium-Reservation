@@ -23,7 +23,10 @@
     "@fortawesome/fontawesome-free": "^6.6.0",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@ngrx/effects": "^18.1.1",
+    "@ngrx/store": "^18.1.1",
     "flowbite": "^2.5.1",
+    "redux": "^5.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -32,6 +35,7 @@
     "@angular-devkit/build-angular": "^18.1.4",
     "@angular/cli": "^18.1.4",
     "@angular/compiler-cli": "^18.1.0",
+    "@ngrx/store-devtools": "^18.1.1",
     "@types/jasmine": "~5.1.0",
     "autoprefixer": "^10.4.20",
     "jasmine-core": "~5.1.0",

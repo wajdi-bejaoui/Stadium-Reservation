@@ -3,6 +3,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "useDefineForClassFields":false,
     "outDir": "./out-tsc/app",
     "types": []
   },

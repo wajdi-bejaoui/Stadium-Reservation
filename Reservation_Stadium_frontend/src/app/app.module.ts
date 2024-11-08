@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,7 +9,6 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms';
 import { StadiumListScreenComponent } from './components/stadium-list-screen/stadium-list-screen.component';
 import { CardComponent } from './components/card/card.component';
 import { SkeletonCardComponent } from './components/skeleton-card/skeleton-card.component';
@@ -20,7 +19,17 @@ import { provideHttpClient } from '@angular/common/http';
 import { ReviewRatingComponent } from './components/review-rating/review-rating.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+
+import { stadiumReducer } from './state/stadium/stadium.reducer';
+import { StadiumEffects } from './state/stadium/stadium.effects';
 
 
 
@@ -49,7 +58,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({ stadiums: stadiumReducer }),
+    EffectsModule.forRoot([StadiumEffects ]),
+    // StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [provideHttpClient()], // add it here 
   bootstrap: [ AppComponent ]

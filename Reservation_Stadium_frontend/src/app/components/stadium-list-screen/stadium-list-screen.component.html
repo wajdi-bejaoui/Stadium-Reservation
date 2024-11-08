@@ -62,10 +62,10 @@
 
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-        <app-card *ngFor="let item of listStadiums " [stadium]="item"></app-card>
+        <app-card *ngFor="let item of listStadiums$ | async " [stadium]="item"></app-card>
     </div>
 
-    <div *ngIf="loading" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+    <div *ngIf="loading$" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         <app-skeleton-card *ngFor="let item of items"></app-skeleton-card>
     </div>
 

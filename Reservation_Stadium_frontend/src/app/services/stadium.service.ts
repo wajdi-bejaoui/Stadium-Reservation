@@ -39,7 +39,6 @@ export class StadiumService {
 
     return this.httpclient.get<any[]>(`${this.stadiumURL}/get`, options);
   
-    // return this.httpclient.get<any[]>(`${this.stadiumURL}`,this.httpOptions);
   }
 
   getStadium(idStadium :any): Observable<any[]> {
