@@ -37,6 +37,11 @@ public class ReservationService {
         return reservationRepository.findById(id);
     }
 
+    public List<Reservation> getReservationsByUserId(Long id) {
+        return reservationRepository.findAllByUserId(id);
+    }
+
+
     public List<Reservation> getAllReservations() {
         return reservationRepository.findAll();
     }

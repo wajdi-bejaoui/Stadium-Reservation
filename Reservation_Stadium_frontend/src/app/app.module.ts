@@ -30,6 +30,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { stadiumReducer } from './state/stadium/stadium.reducer';
 import { StadiumEffects } from './state/stadium/stadium.effects';
+import { AddStadiumComponent } from './components/add-stadium/add-stadium.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
 
 
 
@@ -50,6 +56,9 @@ import { StadiumEffects } from './state/stadium/stadium.effects';
     ReviewRatingComponent,
     ReservationComponent,
     TimeFormatPipe,
+    AddStadiumComponent,
+    FileUploadComponent,
+    MyReservationsComponent,
     
 
   ],
@@ -63,6 +72,8 @@ import { StadiumEffects } from './state/stadium/stadium.effects';
     EffectsModule.forRoot([StadiumEffects ]),
     // StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [provideHttpClient()], // add it here 
   bootstrap: [ AppComponent ]

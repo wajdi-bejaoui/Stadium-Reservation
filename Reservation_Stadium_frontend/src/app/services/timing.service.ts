@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class TimingService {
 
-  timingURL:string  = "http://localhost:8080/api/timings";
+  timingURL:string  = "http://localhost:9000/api/timings";
 
   constructor(private httpclient: HttpClient) { }
   

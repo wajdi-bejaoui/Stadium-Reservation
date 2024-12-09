@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +16,9 @@ export class SignupComponent {
 
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService,private router: Router,
+    private toastr: ToastrService
+) {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -29,11 +33,16 @@ export class SignupComponent {
       this.authService.register(this.registerForm.value).subscribe(
         (response) => {
           console.log('Registration successful', response);
+          this.toastr.success('Registration successful!', 'Success');
+          this.router.navigate(['/signin']);
+
         },
         (error) => {
           console.error('Registration failed', error);
+          this.toastr.error('Registration failed. Please try again.', 'Error');
         }
       );
     }
   }
 }
+

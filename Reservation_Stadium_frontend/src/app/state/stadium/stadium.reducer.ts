@@ -19,7 +19,7 @@ export const stadiumReducer = createReducer(
   initialState,
   on(StadiumActions.loadStadiums, (state) => ({
     ...state,
-    loading: false,
+    loading: true,
   })),
   on(StadiumActions.loadStadiumsSuccess, (state, { stadiums }) => {
     // console.log('Updating stadiums state with:', stadiums);  // Log the state update

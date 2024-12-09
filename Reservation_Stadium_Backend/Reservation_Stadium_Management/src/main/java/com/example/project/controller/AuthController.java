@@ -49,7 +49,7 @@ public class AuthController {
     private CustomUserDetailsService customUserDetailsService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> saveUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<Object> saveUser(@RequestBody UserDto userDto) {
         // Check if the email already exists
         if (userRepository.existsByEmail(userDto.getEmail())) {
             // Return ResponseEntity with a conflict status and message
@@ -58,10 +58,10 @@ public class AuthController {
         }
 
         // Save the user if email doesn't exist
-        userService.save(userDto);
+        User user =userService.save(userDto);
 
         // Return ResponseEntity with OK status and success message
-        return ResponseEntity.ok("Registered Successfully!");
+        return ResponseEntity.ok(user);
     }
 
     @PostMapping("/login")

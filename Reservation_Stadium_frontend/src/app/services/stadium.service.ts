@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class StadiumService {
 
-  stadiumURL:string  = "http://localhost:8080/api/stadiums";
+  stadiumURL:string  = "http://localhost:9000/api/stadiums";
 
   constructor(private httpclient: HttpClient) { }
   
@@ -46,7 +46,16 @@ export class StadiumService {
     return this.httpclient.get<any>(`${this.stadiumURL}/${idStadium}`);
   }
 
-  createStadium(obj : any): Observable<{msg:any}> {
-    return this.httpclient.post<{msg:any}>(`${this.stadiumURL}`,obj, this.httpOptions);
+  // createStadium(obj : any): Observable<any> {
+  //   const options = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'multipart/form-data',
+  //     })
+  //   };
+  //   return this.httpclient.post<any>(`${this.stadiumURL}/add`,obj);
+  // }
+
+  createStadium(obj : any): Observable<any> {
+    return this.httpclient.post<any>(`${this.stadiumURL}/add`,obj,this.httpOptions);
   }
 }

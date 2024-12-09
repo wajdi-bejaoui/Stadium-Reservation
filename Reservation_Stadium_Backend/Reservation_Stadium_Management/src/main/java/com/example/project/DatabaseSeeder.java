@@ -50,7 +50,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                 Stadium stadium = new Stadium();
                 stadium.setId((long) i);
                 stadium.setName("Stadium " + i);
-                stadium.setLocation("Location " + i);
+                stadium.setAddress("Address " + i);
                 stadium.setCapacity(random.nextInt(10) + 10); // Random capacity between 10 and 20
                 stadium.setGovernorate(governorates.get(random.nextInt(governorates.size())));
                 stadium.setCategory(categories.get(random.nextInt(categories.size())));

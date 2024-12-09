@@ -6,6 +6,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { StadiumListScreenComponent } from './components/stadium-list-screen/stadium-list-screen.component';
 import { StadiumDetailScreenComponent } from './components/stadium-detail-screen/stadium-detail-screen.component';
 import { ContactUsScreenComponent } from './components/contact-us-screen/contact-us-screen.component';
+import { AddStadiumComponent } from './components/add-stadium/add-stadium.component';
+import { MyReservationsComponent } from './components/my-reservations/my-reservations.component';
 
 const routes: Routes = [
   { path: '', component: HomeScreenComponent },
@@ -14,6 +16,9 @@ const routes: Routes = [
   { path: 'stadiums', component: StadiumListScreenComponent },
   { path: 'stadium_detail/:id', component: StadiumDetailScreenComponent },
   { path: 'contact', component: ContactUsScreenComponent },
+  { path: 'partenaire', component: AddStadiumComponent },
+  { path: 'my-reservations', component: MyReservationsComponent },
+
   { path: '**', redirectTo: '', pathMatch: 'full' } // Wildcard route to redirect to home
 ];
 

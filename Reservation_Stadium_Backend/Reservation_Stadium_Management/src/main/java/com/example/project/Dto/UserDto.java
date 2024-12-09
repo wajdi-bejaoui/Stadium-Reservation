@@ -19,6 +19,7 @@ public class UserDto {
     private String email;
     private String Roles;
     private String username;
+    private String phone;
 
     // @ElementCollection(targetClass = Role.class)
     // @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name =

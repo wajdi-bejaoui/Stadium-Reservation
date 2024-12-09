@@ -75,9 +75,17 @@ public class ReservationController {
         return reservationService.makeReservation(user, stadium, timingInstance, reservationRequest.getDate());
     }
 
-    @GetMapping("/{id}")
-    public Optional<Reservation> getReservationById(@PathVariable Long id) {
-        return reservationService.getReservationById(id);
+    // @GetMapping("/{id}")
+    // public Optional<Reservation> getReservationById(@PathVariable Long id) {
+    //     return reservationService.getReservationById(id);
+    // }
+
+    @GetMapping("/user")
+    public List<Reservation> getMyReservation(HttpServletRequest request) {
+        
+        Long userId = getUserIdFromToken(request);
+
+        return reservationService.getReservationsByUserId(userId);
     }
 
     @GetMapping

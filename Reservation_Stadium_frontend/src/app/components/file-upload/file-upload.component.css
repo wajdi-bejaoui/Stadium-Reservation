@@ -1,0 +1,15 @@
+.preview {
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    width: 100%;       /* Full width of the container */
+    height: 100%;      /* Full height of the container */
+    border-radius: 0.25rem; /* Optional: rounds the corners of the image */
+  }
+
+  .image-placeholder {
+    width: 400px;
+    height: 300px;
+    background-image: url('https://via.placeholder.com/400x300');
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+  }

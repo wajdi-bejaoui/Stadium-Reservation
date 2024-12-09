@@ -35,9 +35,10 @@ public class JwtAutheticationFilter extends OncePerRequestFilter {
 
         String requestPath = request.getServletPath();
 
-        // Skip the filter for permitted endpoints
+        // Skip the filter for permitted endpoints|| "/api/stadiums"
         if (requestPath.startsWith("/api/stadiums/get") ||
-                requestPath.startsWith("/api/timings/available")) {
+                requestPath.startsWith("/api/timings/available") ||
+                requestPath.startsWith("/api/stadiums/add")) {
             chain.doFilter(request, response);
             return;
         }

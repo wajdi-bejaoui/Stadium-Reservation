@@ -1,0 +1,51 @@
+<div class="text-center">
+        <h2 class="text-lg font-semibold mb-4">Choice images</h2>
+    <div class="grid gap-4 grid-cols-2 justify-center sm:grid-cols-2 xl:grid-cols-4 mx-auto max-w-screen-sm">
+      <div
+        *ngFor="let image of selectedFiles; let i = index"
+        class="w-48 h-36 border border-gray-300 rounded-lg overflow-hidden"
+      >
+        <label for="upload-{{ i }}" class="cursor-pointer block">
+          <img
+            [src]="image || 'https://via.placeholder.com/400x300'"
+            alt="Uploaded Image"
+            class="w-full h-full object-cover"
+          />
+        </label>
+        <input
+          type="file"
+          id="upload-{{ i }}"
+          (change)="handleImageChange($event)"
+          class="hidden"
+          accept="image/*"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="w-48 h-36 border border-gray-300 rounded-lg overflow-hidden">
+    <label *ngFor="let file in selectedFiles " class="cursor-pointer block">
+      <img
+        *ngIf="file ; else placeholder"
+        [src]="file ? ImageToUrl(selectedFiles[0]) : ''"
+        alt="Uploaded Image"
+        class="w-full h-full object-cover"
+      />
+      <ng-template #placeholder>
+        <img
+          src="https://via.placeholder.com/400x300"
+          alt="Uploaded Image"
+          class="w-full h-full object-cover"
+        />
+      </ng-template>
+    </label>
+    <input
+      type="file"
+      id="upload"
+      (change)="handleImageChange($event)"
+      class="hidden"
+      accept="image/*"
+    />
+  </div>
+  
+   -->

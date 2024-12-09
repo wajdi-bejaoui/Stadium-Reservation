@@ -1,0 +1,189 @@
+
+<script src="https://cdn.tailwindcss.com"></script>
+<section>
+  <div class="relative w-full h-96 before:opacity-70 before:bg-black"><img class="absolute h-full w-full object-cover object-center  bg-slate-200" src="https://plus.unsplash.com/premium_photo-1684713510655-e6e31536168d?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="nature image" />
+    <div class="absolute inset-0 h-full w-full bg-black/50"></div>
+    <div class="relative pt-28 text-center">
+      <h2 class="block antialiased tracking-normal font-sans    text-white font-bold  text-3xl lg:text-5xl">BECOME A PARTNER</h2>
+      <p class="block antialiased font-sans text-5xl font-bold leading-relaxed text-white mb-9 opacity-70 text-yellow-200 ">& discover a new audience in seconds</p>
+    </div>
+  </div>
+  <div class="-mt-16 mb-8 px-8 ">
+    <div class="container mx-auto">
+      <div class="py-12 flex justify-center rounded-xl border border-white bg-white shadow-lg shadow-black/5 saturate-200">
+        <!-- component -->
+
+            <form class="my-6" [formGroup]="generalForm" (ngSubmit)="onSubmit()">
+                <!-- Name Field -->
+                <div *ngIf="name?.touched && name?.invalid">
+                    <small *ngIf="name?.errors?.['required']">Name is required.</small>
+                </div>
+                
+                <!-- Address Field -->
+                <div *ngIf="address?.touched && address?.invalid">
+                    <small *ngIf="address?.errors?.['required']">Address is required.</small>
+                </div>
+                
+                <!-- Capacity Field -->
+                <div *ngIf="capacity?.touched && capacity?.invalid">
+                    <small *ngIf="capacity?.errors?.['required']">Capacity is required.</small>
+                    <small *ngIf="capacity?.errors?.['min']">Capacity must be at least 1.</small>
+                </div>
+                
+                <!-- Description Field -->
+                <div *ngIf="description?.touched && description?.invalid">
+                    <small *ngIf="description?.errors?.['required']">Description is required.</small>
+                </div>
+                
+                <!-- Latitude Field -->
+                <div *ngIf="latitude?.touched && latitude?.invalid">
+                    <small *ngIf="latitude?.errors?.['required']">Latitude is required.</small>
+                </div>
+                
+                <!-- Longitude Field -->
+                <div *ngIf="longitude?.touched && longitude?.invalid">
+                    <small *ngIf="longitude?.errors?.['required']">Longitude is required.</small>
+                </div>
+                
+                <!-- Phone Field -->
+                <div *ngIf="phone?.touched && phone?.invalid">
+                    <small *ngIf="phone?.errors?.['required']">Phone is required.</small>
+                    <small *ngIf="phone?.errors?.['pattern']">Phone must match +216 followed by 8 digits.</small>
+                </div>
+                
+                <!-- Email Field -->
+                <div *ngIf="email?.touched && email?.invalid">
+                    <small *ngIf="email?.errors?.['required']">Email is required.</small>
+                    <small *ngIf="email?.errors?.['email']">Invalid email format.</small>
+                </div>
+                
+                <!-- Match Duration Field -->
+                <div *ngIf="matchDuration?.touched && matchDuration?.invalid">
+                    <small *ngIf="matchDuration?.errors?.['required']">Match duration is required.</small>
+                    <small *ngIf="matchDuration?.errors?.['min']">Match duration must be at least 1 minute.</small>
+                </div>
+                
+                <!-- Break Duration Field -->
+                <div *ngIf="breakDuration?.touched && breakDuration?.invalid">
+                    <small *ngIf="breakDuration?.errors?.['required']">Break duration is required.</small>
+                </div>
+                
+                <!-- Opening Time Field -->
+                <div *ngIf="openingTime?.touched && openingTime?.invalid">
+                    <small *ngIf="openingTime?.errors?.['required']">Opening time is required.</small>
+                </div>
+                
+                <!-- Closing Time Field -->
+                <div *ngIf="closingTime?.touched && closingTime?.invalid">
+                    <small *ngIf="closingTime?.errors?.['required']">Closing time is required.</small>
+                </div>
+  
+                <!-- <app-file-upload (imagesChanged)="onImagesChanged($event)" ></app-file-upload> -->
+              <div class="grid sm:grid-cols-2 items-center gap-16 px-8 md:px-4 mx-auto max-w-4xl  text-[#333] font-[sans-serif] mt-8">
+                <div class="ml-auo space-y-4">
+                    <div class="border-l-4 border-black pl-4">
+                        <h3 class="text-l font-bold">Infos générales de votre espace</h3>
+
+                    </div>
+
+                      <input type='text' placeholder='Name' formControlName="name"
+                          class="w-full rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]" />
+                          
+                          <select (change)="onGouvernoratsChange($event)" class="w-full rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]">
+                            <option value="" selected>Governorate</option>
+                            <option  *ngFor="let item of gouvernorats" [value]="item.name">
+                              {{ item.name }}
+                            </option>
+                          </select>
+        
+                          <select (change)="oncategoryChange($event)" class="w-full rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]">
+                            <option value="" selected>Category</option>
+                            <option  *ngFor="let item of categorys" [value]="item.name">
+                              {{ item.name }}
+                            </option>
+                          </select>
+                      <input type='text' placeholder='Address' formControlName="address"
+                          class="w-full rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]" />
+
+                          <input type='number' placeholder='Max number of players' formControlName="capacity"
+                          class="w-full rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]" />
+                          <textarea placeholder='Description' rows="4" formControlName="description"
+                          class="w-full rounded-md px-4 border text-sm pt-2.5 outline-green-600 focus:ring-[#333] focus:border-[#333]"></textarea>
+                      
+                  </div>
+
+                 <div>
+
+                    <div class="ml-auo space-y-4 mb-4">
+                        <div class="border-l-4 border-black pl-4">
+                            <h3 class="text-md font-bold ">Additional info for espace</h3>
+                        </div>
+                        
+    
+                          <div class="flex">
+                            <input type='number' placeholder='matchDuration (min)' formControlName="matchDuration"
+                              class="w-full mr-2 rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]" />
+                          
+                          <input type='number' placeholder='breakDuration (min)' formControlName="breakDuration"
+                              class="w-full rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]" />
+                          </div>
+
+                          <div class="flex">
+                            <input type='time' placeholder='openingTime' formControlName="openingTime"
+                              class="w-full mr-2 rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]" />
+                          
+                          <input type='time' placeholder='closingTime' formControlName="closingTime"
+                              class="w-full rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]" />
+                          </div>
+                              
+                          
+                          
+                      </div>
+
+
+                    <div class="ml-auo space-y-4 mb-4">
+                        <div class="border-l-4 border-black pl-4">
+                            <h3 class="text-md font-bold ">Géolocalisation</h3>
+                        </div>
+                        
+    
+                          <input type='text' placeholder='Latitude' formControlName="latitude"
+                              class="w-full rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]" />
+                          
+                          <input type='text' placeholder='Longitude' formControlName="longitude"
+                              class="w-full rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]" />
+                          
+                          
+                      </div>
+                    
+                      <div class="ml-auo space-y-4">
+                        <div class="border-l-4 border-black pl-4">
+                            <h3 class="text-md font-bold ">Contact</h3>
+                        </div>
+                        
+    
+                          <input type='text' placeholder='Tel +216' formControlName="phone"
+                              class="w-full rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]" />
+                          <input type='email' placeholder='E-mail' formControlName="email"
+                              class="w-full rounded-md py-2.5 px-4 border text-sm outline-green-600 focus:ring-[#333] focus:border-[#333]" />
+                          
+                          
+                      </div>
+                 </div>
+                 
+                  
+                </div>
+                
+
+                 <button type='submit'
+                              class="mt-8 text-white bg-green-600 hover:bg-green-700 font-semibold rounded-md text-sm px-4 py-2.5 w-full">Send</button>
+            </form>
+      </div>
+      <!-- end  -->
+    </div>
+  </div>
+</section>
+
+<!-- footer  -->
+
+<app-footer></app-footer>

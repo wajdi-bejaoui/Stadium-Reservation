@@ -16,10 +16,10 @@ import { AppState } from '../../state/stadium.state';
   styleUrl: './stadium-list-screen.component.css'
 })
 export class StadiumListScreenComponent implements OnInit{
-  listStadiums$!: Observable<any[]>;
-  loading$!: Observable<boolean>;
   // listStadiums !:any[];
   // loading = true;
+  listStadiums$!: Observable<any[]>;
+  loading$!: Observable<boolean>;
   categoryParam: string | null = null;
   gouvernoratParam: string | null = null; 
 
@@ -50,22 +50,10 @@ export class StadiumListScreenComponent implements OnInit{
     });    
     
 
-    // this.stadiumService.getAllStadiums(this.selectedGouvernoratsName,this.selectedcategoryName).subscribe(
-    //   (response: any) => {
-    //     // console.log(response);
-    //     this.listStadiums = response;
-    //     this.loading = false; // Stop loading once data is retrieved
-    //     // console.log(this.listStadiums);
-    //   },
-    //   (error) => {
-    //     console.error(error);
-    //     this.loading = false; // Stop loading even if there is an error
-    //   }
-    // );
   }
-
+  
   items = [1,2,3,4,5,6,7,8,9];
-
+  
   gouvernorats = [
     { id: 1, name: 'Tunis' },
     { id: 2, name: 'Bizerte' },
@@ -73,7 +61,7 @@ export class StadiumListScreenComponent implements OnInit{
     { id: 4, name: 'Manouba' },
     { id: 5, name: 'Sfax' },
   ];
-
+  
   categorys = [
     { id: 1, name: 'Football' },
     { id: 2, name: 'Basketball' },
@@ -82,36 +70,48 @@ export class StadiumListScreenComponent implements OnInit{
     { id: 5, name: 'Natation' },
     { id: 6, name: 'Baby swimming' },
   ];
-
+  
   
 
   oncategoryChange(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedcategoryName = selectElement.value;
   }
-
+  
   onGouvernoratsChange(event: Event): void {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedGouvernoratsName = selectElement.value;
   }
-
+  
   search() {
     this.store.dispatch(loadStadiums({ category: this.selectedcategoryName, gouvernorat: this.selectedGouvernoratsName }));
   }
-
+  
   // search() {
-  //   this.stadiumService.getAllStadiums(this.selectedGouvernoratsName,this.selectedcategoryName).subscribe(
-  //     (response: any) => {
-  //       console.log(response);
-  //       this.listStadiums = response;
-  //       this.loading = false; // Stop loading once data is retrieved
-  //       // console.log(this.listStadiums);
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //       this.loading = false; // Stop loading even if there is an error
-  //     }
-  //   );
-  // }
-
+    //   this.stadiumService.getAllStadiums(this.selectedGouvernoratsName,this.selectedcategoryName).subscribe(
+      //     (response: any) => {
+        //       console.log(response);
+        //       this.listStadiums = response;
+        //       this.loading = false; // Stop loading once data is retrieved
+        //       // console.log(this.listStadiums);
+        //     },
+        //     (error) => {
+          //       console.error(error);
+          //       this.loading = false; // Stop loading even if there is an error
+          //     }
+          //   );
+          // }
+          
+          // this.stadiumService.getAllStadiums(this.selectedGouvernoratsName,this.selectedcategoryName).subscribe(
+          //   (response: any) => {
+          //     // console.log(response);
+          //     this.listStadiums = response;
+          //     this.loading = false; // Stop loading once data is retrieved
+          //     // console.log(this.listStadiums);
+          //   },
+          //   (error) => {
+          //     console.error(error);
+          //     this.loading = false; // Stop loading even if there is an error
+          //   }
+          // );
 }

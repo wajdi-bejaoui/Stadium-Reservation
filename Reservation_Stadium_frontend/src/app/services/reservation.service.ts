@@ -7,7 +7,7 @@ import { Observable, tap } from 'rxjs';
 })
 export class ReservationService {
 
-  apiUrl:string  = " http://localhost:8080/api/reservations";
+  apiUrl:string  = " http://localhost:9000/api/reservations";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -15,6 +15,12 @@ export class ReservationService {
       'Authorization': 'Bearer ' + sessionStorage.getItem('token')
     })
   };
+
+
+
+  getReservationsByUserId(): Observable<any> {
+    return this.httpclient.get(`${this.apiUrl}/user`,this.httpOptions);
+  }
 
 
   constructor(private httpclient: HttpClient) { }

@@ -51,11 +51,13 @@ public class SecurityConfig {
                         .requestMatchers("/api/users/login").permitAll()
                         .requestMatchers("/api/users/registration").permitAll()
                         .requestMatchers("/api/reservations/**").permitAll() // Explicitly allow POST for
+                        .requestMatchers("/api/reservations/user").permitAll() // Explicitly allow POST for
+
                         .requestMatchers(HttpMethod.POST, "/api/reservations").permitAll() // Explicitly allow POST for
 
                         .requestMatchers("/api/users/**").permitAll()
                         .requestMatchers("/users/username/**").permitAll()
-                        .anyRequest().authenticated() // Ensure all other requests are authenticated
+                         // Ensure all other requests are authenticated
                 )
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))// Stateless
                                                                                                              // session
